@@ -5,7 +5,6 @@
  */
 void iniciar_agenda(Agenda *agenda){
     agenda->num_contactos = 0;
-
 }
 // Varible que lleva la cuenta de cuantos contactos hay en la agenda
 int num_contactos;
@@ -23,15 +22,24 @@ void agregar_contacto(Agenda *agenda, Contacto c){
  * En caso contrario retorna -1
  */
 int buscar_contacto(Agenda *agenda, char *nombre){
-
+    for(int i = 0; i < agenda->num_contactos; i++){
+        if(strcmp(agenda->contactos[i].nombre, nombre) == 0){
+            return i;
+        }
+    }
+    return -1;
 }
-
 
 /**
  * Esta función  sirve para buscar un contacto por su número de telefono en la agenda
  */
 int buscar_contacto_x_telefono(Agenda *agenda, char telefono[]){
-
+    for(int i = 0; i < agenda->num_contactos; i++){
+        if(strcmp(agenda->contactos[i].telefono, telefono) == 0){
+            return i;
+        }
+    }
+    return -1;
 }
 
 
