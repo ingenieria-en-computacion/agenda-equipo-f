@@ -4,22 +4,20 @@
  * Esta función se encarga de iniciar el número de contactos a cero
  */
 void iniciar_agenda(Agenda *agenda){
+    agenda->num_contactos = 0;
 
 }
-
-
-
 // Varible que lleva la cuenta de cuantos contactos hay en la agenda
 int num_contactos;
-
 /**
  * Esta función sirve para agregar un contacto nuevo en la agenda
  */
 void agregar_contacto(Agenda *agenda, Contacto c){
-
+    if(agenda->num_contactos < MAX_CONTACTOS){
+        agenda->contactos[agenda->num_contactos] = c;
+        agenda->num_contactos++;
+    }
 }
-
-
 /**
  * Esta función sirve para buscar un contacto por nombre en la agenda y retorna la posición del contacto si exisite
  * En caso contrario retorna -1
