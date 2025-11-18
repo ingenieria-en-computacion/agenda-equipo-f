@@ -63,6 +63,10 @@ void ordenar_contactos_inv(Agenda *a){
     for(i = 0; i < a->num_contactos; i++){
         for(j=0; j < a->num_contactos-i-1; j++){
             //Completar basandose en la función anterior
+            if(strcmp(a->contactos[j].nombre, a->contactos[j+1].nombre) < 0){
+                temp = a->contactos[j];
+                a->contactos[j] = a->contactos[j+1];
+                a->contactos[j+1] = temp;
         }
     }
 }
