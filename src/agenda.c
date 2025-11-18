@@ -73,10 +73,10 @@ void ordenar_contactos_inv(Agenda *a){
                 temp = a->contactos[j];
                 a->contactos[j] = a->contactos[j+1];
                 a->contactos[j+1] = temp;
+            }
         }
     }
 }
-
 
 /**
  * Función auxiliar para imprimir un contacto

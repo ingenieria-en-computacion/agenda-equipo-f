@@ -1,6 +1,10 @@
 #ifndef __AGENDA_H__
 #define __AGENDA_H__
 
+
+#include <stdio.h>
+#include <string.h>
+
 #define MAX_CONTACTOS 100
 
 enum TipoTelefono {CASA, MOVIL, OFICINA, OTRO};
@@ -15,11 +19,11 @@ struct Persona{
     // dia de nacimiento
     int dia_nacimiento;
     // tipo contacto
-    enum TipoTelefono tipo_telefono
+    enum TipoTelefono tipo_telefono;
     // numero de telefono
     char telefono[11];
-    // tipo de numero
 };
+    // tipo de numero
 
 typedef struct Persona Contacto;
 
