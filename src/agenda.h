@@ -1,7 +1,6 @@
 #ifndef __AGENDA_H__
 #define __AGENDA_H__
 
-
 #include <stdio.h>
 #include <string.h>
 
