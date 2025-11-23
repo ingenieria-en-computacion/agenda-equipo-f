@@ -96,14 +96,33 @@ void mostrar_contacto(Contacto c){
  * Función auxiliar para leer un contacto
  */
 void leer_contacto(Contacto *c){
+    int tipo_temp, mes_temp;
+    printf("Nombre: ");
+    scanf("%s", c->nombre);
+    printf("Apellido: ");
+    scanf("%s", c->apellido);
+    printf("Dia nacimiento: ");
+    scanf("%d", &c->dia_nacimiento);
+    
+    printf("Mes nacimiento (1-12): ");
+    scanf("%d", &mes_temp);
+    c->mes_nacimiento=(enum Mes)mes_temp;
 
+    printf("Telefono: ");
+    scanf("%s", c->telefono);
+
+    printf("Tipo telefono (1-Casa, 2-Movil, 3-Oficina, 4-Otro): ");
+    scanf("%d", &tipo_temp);
+    c->tipo_telefono=(enum TipoTelefono)tipo_temp;
 }
 
 /**
  * Función que imprime todos los contactos de la agenda en pantalla
  */
 void imprimir_agenda(Agenda agenda){
-
+    printf("Nombre\tApellido\tDia\tMes\tTelefono\tTipo\n");
+    for(int i=0; i<agenda.num_contactos; i++){
+        mostrar_contacto(agenda.contactos[i]);
 }
 
 /**
