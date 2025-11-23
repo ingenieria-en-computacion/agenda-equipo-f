@@ -82,7 +82,7 @@ void ordenar_contactos_inv(Agenda *a){
  * Función auxiliar para imprimir un contacto
  */
 void mostrar_contacto(Contacto c){
-    printf("%s %s %d %d %s %d \n", 
+    printf("\t%s\t%s\t%d\t%d\t%s\t%d\n", 
            c.nombre, 
            c.apellido, 
            c.dia_nacimiento, 
