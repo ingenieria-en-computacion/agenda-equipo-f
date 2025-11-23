@@ -82,24 +82,25 @@ void mostrar_contacto(Contacto c){
 
 //Función auxiliar para leer un contacto
 void leer_contacto(Contacto *c){
-    int tipo_temp, mes_temp;
+    int mes, tipo;
+    
     printf("Nombre: ");
     scanf("%s", c->nombre);
     printf("Apellido: ");
     scanf("%s", c->apellido);
-    printf("Dia nacimiento: ");
+    printf("Día nacimiento: ");
     scanf("%d", &c->dia_nacimiento);
-    
     printf("Mes nacimiento (1-12): ");
-    scanf("%d", &mes_temp);
-    c->mes_nacimiento=(enum Mes)mes_temp;
-
-    printf("Telefono: ");
+    scanf("%d", &mes);
+    c->mes_nacimiento = mes - 1;
+    
+    printf("Tipo de teléfono (1-Casa 2-Movil 3-Oficina 4-Otro):\n");
+    printf("Seleccione (1-4): ");
+    scanf("%d", &tipo);
+    c->tipo_telefono = tipo - 1;
+    
+    printf("Teléfono: ");
     scanf("%s", c->telefono);
-
-    printf("Tipo telefono (1-Casa, 2-Movil, 3-Oficina, 4-Otro): ");
-    scanf("%d", &tipo_temp);
-    c->tipo_telefono=(enum TipoTelefono)tipo_temp;
 }
 
 //Función que imprime todos los contactos de la agenda en pantalla
@@ -110,11 +111,35 @@ void imprimir_agenda(Agenda agenda){
 }
 
 //Función que sirve para cargar contactos escritos en un archivo a la agenda
- void cargar_contactos(char *filename, Agenda *agenda){
-
+void cargar_contactos(char *filename, Agenda *agenda){
+    FILE *file = fopen(filename, "r");
+    if(file == NULL) return;
+    
+    Contacto c;
+    int mes, tipo;
+    while(fscanf(file, "%s %s %d %d %s %d", 
+                 c.nombre, c.apellido, &c.dia_nacimiento, 
+                 &mes, c.telefono, &tipo) == 6) {
+        c.mes_nacimiento = mes - 1;
+        c.tipo_telefono = tipo - 1;
+        agregar_contacto(agenda, c);
+    }
+    fclose(file);
 }
 
 //Función que sirve para guardar todos los contactos de la agenda en un archivo
 void guardar_contactos(char *filename, Agenda agenda){
-
+    FILE *file = fopen(filename, "w");
+    if(file == NULL) return;
+    
+    for(int i = 0; i < agenda.num_contactos; i++){
+        fprintf(file, "%s %s %d %d %s %d\n",
+                agenda.contactos[i].nombre,
+                agenda.contactos[i].apellido,
+                agenda.contactos[i].dia_nacimiento,
+                agenda.contactos[i].mes_nacimiento + 1,
+                agenda.contactos[i].telefono,
+                agenda.contactos[i].tipo_telefono + 1);
+    }
+    fclose(file);
 }
