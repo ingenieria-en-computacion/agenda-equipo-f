@@ -92,12 +92,12 @@ void leer_contacto(Contacto *c){
     scanf("%d", &c->dia_nacimiento);
     printf("Mes nacimiento (1-12): ");
     scanf("%d", &mes);
-    c->mes_nacimiento = mes - 1;
+    c->mes_nacimiento = mes;
     
     printf("Tipo de teléfono (1-Casa 2-Movil 3-Oficina 4-Otro):\n");
     printf("Seleccione (1-4): ");
     scanf("%d", &tipo);
-    c->tipo_telefono = tipo - 1;
+    c->tipo_telefono = tipo;
     
     printf("Teléfono: ");
     scanf("%s", c->telefono);
@@ -120,8 +120,8 @@ void cargar_contactos(char *filename, Agenda *agenda){
     while(fscanf(file, "%s %s %d %d %s %d", 
                  c.nombre, c.apellido, &c.dia_nacimiento, 
                  &mes, c.telefono, &tipo) == 6) {
-        c.mes_nacimiento = mes - 1;
-        c.tipo_telefono = tipo - 1;
+        c.mes_nacimiento = mes ;
+        c.tipo_telefono = tipo ;
         agregar_contacto(agenda, c);
     }
     fclose(file);
@@ -137,9 +137,10 @@ void guardar_contactos(char *filename, Agenda agenda){
                 agenda.contactos[i].nombre,
                 agenda.contactos[i].apellido,
                 agenda.contactos[i].dia_nacimiento,
-                agenda.contactos[i].mes_nacimiento + 1,
+                agenda.contactos[i].mes_nacimiento ,
                 agenda.contactos[i].telefono,
-                agenda.contactos[i].tipo_telefono + 1);
+                agenda.contactos[i].tipo_telefono );
     }
     fclose(file);
 }
+
