@@ -70,7 +70,7 @@ void ordenar_contactos_inv(Agenda *a){
 
 //Función auxiliar para imprimir un contacto
 void mostrar_contacto(Contacto c){
-    printf("\t%s\t%s\t%d\t%d\t%s\t%d\n", 
+    printf("%-12s %-12s %-4d %-4d %-12s %-2d\n",
            c.nombre, 
            c.apellido, 
            c.dia_nacimiento, 
@@ -105,7 +105,8 @@ void leer_contacto(Contacto *c){
 
 //Función que imprime todos los contactos de la agenda en pantalla
 void imprimir_agenda(Agenda agenda){
-    printf("Nombre\tApellido\tDia\tMes\tTelefono\tTipo\n");
+    printf("%-12s %-12s %-4s %-4s %-12s %-2s\n", 
+           "Nombre", "Apellido", "Dia", "Mes", "Telefono", "Tipo");
     for(int i=0; i<agenda.num_contactos; i++){
         mostrar_contacto(agenda.contactos[i]);
     }
