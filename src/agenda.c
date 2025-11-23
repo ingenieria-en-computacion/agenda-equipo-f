@@ -108,6 +108,7 @@ void imprimir_agenda(Agenda agenda){
     printf("Nombre\tApellido\tDia\tMes\tTelefono\tTipo\n");
     for(int i=0; i<agenda.num_contactos; i++){
         mostrar_contacto(agenda.contactos[i]);
+    }
 }
 
 //Función que sirve para cargar contactos escritos en un archivo a la agenda
