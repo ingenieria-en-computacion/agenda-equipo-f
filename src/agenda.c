@@ -145,4 +145,3 @@ void guardar_contactos(char *filename, Agenda agenda){
     }
     fclose(file);
 }
-
