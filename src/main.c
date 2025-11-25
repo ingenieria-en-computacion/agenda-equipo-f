@@ -18,7 +18,7 @@ int main() {
         printf("5. Ordenar contactos (A-Z)\n");
         printf("6. Ordenar contactos (Z-A)\n");
         printf("7. Guardar contactos en archivo\n");
-        printf("8. Cargar contactos desde archivo\n");
+        printf("8. Cargar contactos desde archivo agenda.txt existente\n");
         printf("9. Salir\n");
         printf("Opción: ");
         scanf("%d", &opcion);
